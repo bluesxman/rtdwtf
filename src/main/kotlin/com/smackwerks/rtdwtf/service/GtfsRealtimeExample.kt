@@ -3,6 +3,7 @@ package com.smackwerks.service
 import com.smackwerks.client.RTD_SCHEDULE_PREFIX
 import com.smackwerks.client.RtdRealtimeClient
 import com.smackwerks.client.RtdScheduleClient
+import com.smackwerks.rtdwtf.etl.RtdScheduleLoader
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.runBlocking
 import java.nio.channels.FileChannel
@@ -16,15 +17,17 @@ object GtfsRealtimeExample {
     @Throws(Exception::class)
     @JvmStatic
     fun main(args: Array<String>) {
+        val loader = RtdScheduleLoader()
+        loader.loadAll()
 
-        val tmpFile = Files.createTempFile(RTD_SCHEDULE_PREFIX, ".zip")
-        val dst = FileChannel.open(tmpFile, StandardOpenOption.APPEND)
-
-        val client = RtdScheduleClient()
-        runBlocking {
-            client.fetchSchedule(dst)
-            println(tmpFile.toString())
-        }
+//        val tmpFile = Files.createTempFile(RTD_SCHEDULE_PREFIX, ".zip")
+//        val dst = FileChannel.open(tmpFile, StandardOpenOption.APPEND)
+//
+//        val client = RtdScheduleClient()
+//        runBlocking {
+//            client.fetchSchedule(dst)
+//            println(tmpFile.toString())
+//        }
 
 //        val client = RtdRealtimeClient()
 //        runBlocking {
