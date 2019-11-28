@@ -8,4 +8,5 @@ object Config {
         System.getenv("RTD_RT_PASSWORD")
     }
     const val rtdRtUrl =  "http://googlefeeder.rtd-denver.com/google_sync/"
+    const val rtdScheduleUrl = "http://www.rtd-denver.com/GoogleFeeder/google_transit.zip"
 }
