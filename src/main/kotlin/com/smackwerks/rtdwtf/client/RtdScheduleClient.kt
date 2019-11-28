@@ -11,9 +11,7 @@ const val RTD_SCHEDULE_PREFIX = "rtd-schedule"
 class RtdScheduleClient(val httpClient: HttpClient = HttpClient()) {
     suspend fun fetchSchedule(dst: FileChannel) {
         val src = httpClient.get<ByteArray>(Config.rtdScheduleUrl)
-        val buffer = ByteBuffer.allocate(src.size)
-        buffer.put(src)
-        buffer.flip()
+        val buffer = ByteBuffer.wrap(src)
 
         dst.use {
             // TODO: switch to coroutine-based async file io.  blocking io here for now.
