@@ -29,7 +29,6 @@ class RtdScheduleLoader {
             client.fetchSchedule(dst)
         }
 
-        val env = hashMapOf("create" to "false")
-        return FileSystems.newFileSystem(URI("jar:file:" + tmpFile.toUri().path), env)
+        return FileSystems.newFileSystem(tmpFile, null)
     }
 }
