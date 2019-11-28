@@ -5,12 +5,8 @@ import io.ktor.client.HttpClient
 import io.ktor.client.request.get
 import java.nio.ByteBuffer
 import java.nio.channels.FileChannel
-import java.nio.file.Files
-import java.nio.file.Path
-import java.nio.file.StandardOpenOption
 
 const val RTD_SCHEDULE_PREFIX = "rtd-schedule"
-const val MAX_SCHEDULE_SIZE = 1024 * 1024 * 100 // 50 MB max
 
 class RtdScheduleClient(val httpClient: HttpClient = HttpClient()) {
     suspend fun fetchSchedule(dst: FileChannel) {
