@@ -9,11 +9,13 @@ import io.ktor.client.request.get
 
 class RtdRealtimeClient(val httpClient: HttpClient = defaultClient()) {
 
-    suspend fun fetchTrips(): GtfsRealtime.FeedMessage {
-        val bytes = httpClient.get<ByteArray>("${Config.rtdRtUrl}/TripUpdate.pb")
-        val msg = GtfsRealtime.FeedMessage.parseFrom(bytes)
-        return msg
+    private suspend fun fetch(path: String): GtfsRealtime.FeedMessage {
+        val bytes = httpClient.get<ByteArray>("${Config.rtdRtUrl}/${path}")
+        return GtfsRealtime.FeedMessage.parseFrom(bytes)
     }
+
+    suspend fun fetchTrips() = fetch("TripUpdate.pb")
+    suspend fun fetchPositions() = fetch("VehiclePosition.pb")
 
     companion object {
         private fun defaultClient(): HttpClient {
