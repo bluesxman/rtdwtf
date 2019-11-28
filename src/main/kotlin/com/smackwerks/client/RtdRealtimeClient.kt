@@ -11,7 +11,8 @@ class RtdRealtimeClient(val httpClient: HttpClient = defaultClient()) {
 
     suspend fun fetchTrips(): GtfsRealtime.TripUpdate {
         val bytes = httpClient.get<ByteArray>("${Config.rtdRtUrl}/TripUpdate.pb")
-        return GtfsRealtime.TripUpdate.parseFrom(bytes)
+        val msg = GtfsRealtime.FeedMessage.parseFrom(bytes)
+        return msg.getEntity(0).tripUpdate
     }
 
     companion object {
