@@ -12,10 +12,11 @@ import java.nio.file.StandardOpenOption
 
 class RtdScheduleLoader {
     fun loadAll() {
-        val zip = fetchZip()
-        val root = zip.getPath("/")
-        for (files in Files.list(root)) {
-            println(files)
+        fetchZip().use { zip ->
+            val root = zip.getPath("/")
+            for (files in Files.list(root)) {
+                println(files)
+            }
         }
     }
 
