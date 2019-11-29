@@ -22,11 +22,6 @@ class RtdScheduleLoader {
             for (files in Files.list(root)) {
                 println(files)
             }
-//            csvReader().open(Files.newInputStream(zip.getPath("/feed_info.txt"))) {
-//                readAllAsSequence().forEach { row ->
-//                    println(row)
-//                }
-//            }
 
             val reader = Files.newBufferedReader(zip.getPath("/feed_info.txt"))
             val beans = CsvToBeanBuilder<FeedInfo>(reader)

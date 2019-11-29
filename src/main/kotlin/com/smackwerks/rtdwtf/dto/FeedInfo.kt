@@ -2,10 +2,9 @@ package com.smackwerks.rtdwtf.dto
 
 import com.opencsv.bean.CsvBindByName
 import com.opencsv.bean.CsvDate
-import java.util.*
+import java.util.Date
 
 class FeedInfo {
-    //    feed_publisher_name, feed_publisher_url, feed_lang, feed_start_date, feed_end_date, feed_version
     @CsvBindByName(column = "feed_publisher_name")
     var publisherName: String? = null
 
@@ -27,6 +26,6 @@ class FeedInfo {
     var version: String? = null
 
     override fun toString(): String {
-        return "version=$version"
+        return "version=$version start=$startDate end=$endDate"
     }
 }
