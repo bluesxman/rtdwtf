@@ -1,14 +1,19 @@
 package com.smackwerks.rtdwtf.etl
 
-import com.github.doyaaaaaken.kotlincsv.dsl.csvReader
+//import com.github.doyaaaaaken.kotlincsv.dsl.csvReader
+
+import com.opencsv.bean.CsvToBeanBuilder
 import com.smackwerks.client.RTD_SCHEDULE_PREFIX
 import com.smackwerks.client.RtdScheduleClient
+import com.smackwerks.rtdwtf.dto.FeedInfo
 import kotlinx.coroutines.runBlocking
+import java.io.FileReader
 import java.nio.channels.FileChannel
 import java.nio.file.FileSystem
 import java.nio.file.FileSystems
 import java.nio.file.Files
 import java.nio.file.StandardOpenOption
+
 
 class RtdScheduleLoader {
     fun loadAll() {
@@ -17,10 +22,20 @@ class RtdScheduleLoader {
             for (files in Files.list(root)) {
                 println(files)
             }
-            csvReader().open(Files.newInputStream(zip.getPath("/feed_info.txt"))) {
-                readAllAsSequence().forEach { row ->
-                    println(row)
-                }
+//            csvReader().open(Files.newInputStream(zip.getPath("/feed_info.txt"))) {
+//                readAllAsSequence().forEach { row ->
+//                    println(row)
+//                }
+//            }
+
+            val reader = Files.newBufferedReader(zip.getPath("/feed_info.txt"))
+            val beans = CsvToBeanBuilder<FeedInfo>(reader)
+                .withType(FeedInfo::class.java)
+                .build()
+                .parse()
+
+            beans.forEach { row ->
+                println(row)
             }
         }
     }
