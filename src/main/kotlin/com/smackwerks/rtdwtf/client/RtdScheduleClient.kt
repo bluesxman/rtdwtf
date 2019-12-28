@@ -1,6 +1,6 @@
-package com.smackwerks.client
+package com.smackwerks.rtdwtf.client
 
-import com.smackwerks.service.Config
+import com.smackwerks.rtdwtf.service.Config
 import io.ktor.client.HttpClient
 import io.ktor.client.request.get
 import java.nio.ByteBuffer

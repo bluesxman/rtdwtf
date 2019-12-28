@@ -1,8 +1,8 @@
-package com.smackwerks.service
+package com.smackwerks.rtdwtf.service
 
-import com.smackwerks.client.RTD_SCHEDULE_PREFIX
-import com.smackwerks.client.RtdRealtimeClient
-import com.smackwerks.client.RtdScheduleClient
+import com.smackwerks.rtdwtf.client.RTD_SCHEDULE_PREFIX
+import com.smackwerks.rtdwtf.client.RtdRealtimeClient
+import com.smackwerks.rtdwtf.client.RtdScheduleClient
 import com.smackwerks.rtdwtf.etl.RtdScheduleLoader
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.runBlocking

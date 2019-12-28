@@ -3,8 +3,8 @@ package com.smackwerks.rtdwtf.etl
 //import com.github.doyaaaaaken.kotlincsv.dsl.csvReader
 
 import com.opencsv.bean.CsvToBeanBuilder
-import com.smackwerks.client.RTD_SCHEDULE_PREFIX
-import com.smackwerks.client.RtdScheduleClient
+import com.smackwerks.rtdwtf.client.RTD_SCHEDULE_PREFIX
+import com.smackwerks.rtdwtf.client.RtdScheduleClient
 import com.smackwerks.rtdwtf.dto.FeedInfo
 import kotlinx.coroutines.runBlocking
 import java.io.FileReader

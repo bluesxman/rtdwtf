@@ -1,4 +1,4 @@
-package com.smackwerks.service
+package com.smackwerks.rtdwtf.service
 
 class FetchTripUpdates {
 }
